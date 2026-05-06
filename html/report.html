@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View Report | Mali</title>
+
+  <script>
+  const userId = localStorage.getItem("userId");
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  if (!userId || isLoggedIn !== "true") {
+    localStorage.removeItem("userId");
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userProfile");
+    window.location.href = "login.html";
+  }
+</script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Mali</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu">☰</button>
+
+      <nav class="main-nav" id="mainNav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About</a></li>
+          <li><a href="expenses.html">Expenses</a></li>
+          <li><a href="report.html" class="active">Report</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+  <a href="login.html" class="login-link guest-only">Login</a>
+  <a href="register.html" class="btn btn-primary guest-only">Get Started</a>
+  <a href="#" onclick="logout()" class="btn btn-primary user-only">Logout</a>
+</div>
+    </div>
+  </header>
+
+  <main class="inner-page">
+    <section class="page-hero small-hero">
+      <div class="container">
+        <p class="section-label">Financial Report</p>
+        <h1>View Your Spending Report</h1>
+        <p class="page-description">
+          This page summarizes your expenses and helps you understand your spending habits.
+        </p>
+      </div>
+    </section>
+
+    <section class="home-features">
+      <div class="container">
+        <div class="home-feature-grid">
+          <div class="home-feature-card">
+            <h3>Total Income</h3>
+            <p id="reportIncome">0 SAR</p>
+          </div>
+
+          <div class="home-feature-card">
+            <h3>Total Expenses</h3>
+            <p id="reportExpenses">0 SAR</p>
+          </div>
+
+          <div class="home-feature-card">
+            <h3>Remaining Balance</h3>
+            <p id="reportBalance">0 SAR</p>
+          </div>
+
+          <div class="home-feature-card">
+            <h3>Highest Category</h3>
+            <p id="reportCategory">No data yet</p>
+          </div>
+        </div>
+
+        <div class="form-box report-box">
+          <h2>Expense Summary</h2>
+          <div id="reportList"></div>
+          <div class="report-actions">
+            <button type="button" id="clearReportButton" class="btn btn-secondary">Clear Report</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 Mali. All rights reserved.</p>
+      <p>Designed for CCSW321 Web Development Project.</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+
+</html>
